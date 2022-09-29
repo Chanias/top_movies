@@ -1,9 +1,20 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+<div id="app">
+  <HeaderNav />
+
+  <div v_if="$route.path == '/'">
+    <!--si la route est / (racine du site) -->
+    <h1 class="pt-5 font-weight-light">Vos films préférés sont sur Top Movies !</h1>
+    <MoviesList :movies="movies" :loading="loading" :errored="errored" />
+  </div>
+
+  <div v-else>
+    <!--si la route est différente de / -->
+    <router-view :key="$route.fullPath"></router-view>
+  </div>
+
+  <FooterApp />
+</div>
 </template>
 
 <style>
