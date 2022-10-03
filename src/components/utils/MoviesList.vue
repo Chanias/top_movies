@@ -1,27 +1,38 @@
 <template>
-<div class="container">
-    <h1>Les films</h1>
-</div>
 
+    <div class="p-5">
+        <ul>
+            <li class="list-unstyled" v-for="movie in movies" :key="movie.id">
+
+                <MovieCard :id="movie.id" :title="movie.title" :poster_path="movie.poster_path"
+                    :release_date="movie.release_date" :vote_average="movie.vote_average" :overview="movie.overview" />
+            </li>
+        </ul>
+    </div>
 </template>
-
 <script>
-    import MoviesList from './components/utils/MoviesList.vue'
-    import axios from 'axios'
-
+import MovieCard from "./MovieCard.vue"
 export default {
-    name: "MoviesList",
+    name: 'MoviesList',
     components: {
-        MoviesList
+        MovieCard
     },
     props: [
-        "title",
-        "poster_path",
-        "release_date",
-        "vote_average",
-        "overwiew"
+        "movies",
+        "loading",
+        "errored"
     ],
 }
-
-
 </script>
+
+<style scoped>
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: inline-block;
+    margin: 0 10px;
+}
+</style>
