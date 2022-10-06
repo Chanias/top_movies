@@ -6,29 +6,38 @@
 
                 <MovieCard :id="movie.id" :title="movie.title" :poster_path="movie.poster_path"
                     :release_date="movie.release_date" :vote_average="movie.vote_average" :overview="movie.overview" />
+
             </li>
+
         </ul>
     </div>
+
 </template>
+
 <script>
 import MovieCard from "./MovieCard.vue"
+
+
 export default {
     name: 'MoviesList',
     components: {
-        MovieCard
+        MovieCard,
     },
+
     props: [
         "movies",
         "loading",
         "errored"
     ],
 }
+
 </script>
 
-<style scoped>
+<style>
 ul {
     list-style-type: none;
     padding: 0;
+    text-decoration: none;
 }
 
 li {

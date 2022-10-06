@@ -13,7 +13,7 @@
 
                 <ul class="navbar">
                     <li class="nav-item">
-                        <router-link to="/MoviesList" class="link text-center nav-link mx-4">Top MoviesList
+                        <router-link to="/" class="link text-center nav-link mx-4">Top films
                         </router-link>
                     </li>
                     <li class="nav-item">

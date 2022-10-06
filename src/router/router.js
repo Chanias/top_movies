@@ -5,6 +5,7 @@ import AmericanMovies from "../components/AmericanMovies.vue"
 import TopRatedMovies from "../components/TopRatedMovies.vue"
 import LastMovies from "../components/LastMovies.vue"
 import SearchMovies from "../components/SearchMovies.vue"
+import MovieDetails from "../components/MovieDetails.vue"
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
   {
     path: '/SearchMovies',
     component: SearchMovies
+  },
+  {
+    path: '/MovieDetails/:id', //pour faire passer le paramètre dans la route
+    props: true,
+    component: MovieDetails
   },
 ]
 
