@@ -6,7 +6,7 @@
 
   <div v-else>
 
-    <router-link v-bind:to="`/MovieDetails/${id}`">
+    <router-link class="routerLink" v-bind:to="`/MovieDetails/${id}`">
 
 
       <div class="card m-3" style="width: 18rem;" id="card">
@@ -70,6 +70,12 @@ export default {
 <style>
 #card {
   box-shadow: 5px 5px 5px 0px;
+  max-width: 20rem;
+  height: 40rem;
 }
+.routerLink{
+  text-decoration: none;
+  color: inherit;
+  }
 </style>
 

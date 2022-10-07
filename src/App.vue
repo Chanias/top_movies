@@ -13,7 +13,9 @@
       <!--si la route est différente de / -->
       <router-view :key="$route.fullPath"></router-view>
     </div>
-
+    <div id="scroll_to_top">
+    <a href="#top"><img src="./assets/arrow_up.jpg" alt="Retourner en haut" /></a>
+</div>
     <FooterApp />
   </div>
 </template>
@@ -80,7 +82,19 @@ nav a {
   color: #2c3e50;
 }
 
-nav a.router-link-exact-active {
+nav a .router-link-exact-active {
   color: #42b983;
 }
+#scroll_to_top{
+
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  bottom: 50px;
+  right: 30px;
+}
+#scroll_to_top img {
+  width: 25px;
+}
+
 </style>

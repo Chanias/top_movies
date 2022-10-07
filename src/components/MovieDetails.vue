@@ -58,8 +58,9 @@
 
                         <div class="card">
                             <h5 class="card-title">{{credits.cast[0].name}}</h5>
-                            <img src="{{credits.cast[0].preUrl + profile_path}}" class="card-img-top"
-                                alt="Photo Acteur">
+                            
+                            <img v-bind:src="preUrl + credits.cast[0].poster_path" alt="Image_films" style="width:20rem" />
+      
                             <div class="card-body">
                                 <p class="card-text">Personnage : {{credits.cast[0].character}}</p>
                             </div>
@@ -103,7 +104,7 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            preUrl: "https://image.tmdb.org/t/p/original",
+            preUrl: "https://image.tmdb.org/t/p/original/",
             movie: null,
             video: [],
             credits: [],
