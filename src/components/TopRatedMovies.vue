@@ -4,7 +4,7 @@
         Le top 50 des films les mieux notés
     </h1>
 
-    <div v-if="errored">
+    <div v-if="error">
         <p class="text-danger">Une erreur est survenue, veuillez rafraîchir la page</p>
     </div>
 
@@ -68,10 +68,13 @@ export default
                                 nbMovies = nbMovies.splice(0, 10);
                                 this.movies.push(movie)
                             })
-                            .catch(() => {
-                                this.errored = true;
-                            });
+                                .catch(() => {
+                                    this.error = true;
+                                });
                         })
+                        .catch(() => {
+                            this.error = true;
+                        });
                 })
         }
     }

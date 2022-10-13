@@ -11,7 +11,7 @@
     <button type="submit">Rechercher</button>
 
   </form>
-  
+
   <!-- Pour faire le lien avec la liste de films -->
   <MoviesList :movies="movies" :error="error" :loading="loading" />
 </template>

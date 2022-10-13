@@ -3,8 +3,8 @@
     <h1 class="text-center m-5 w-50 mx-auto p-3">
         Les derniers films
     </h1>
-    
-    <div v-if="errored">
+
+    <div v-if="error">
         <p class="text-danger">Une erreur est survenue, veuillez rafraîchir la page</p>
     </div>
 
@@ -57,10 +57,13 @@ export default {
                             this.movies.push(movie)
                         })
                             .catch(() => {
-                                this.errored = true;
+                                this.error = true;
                             });
                     })
             })
+            .catch(() => {
+                this.error = true;
+            });
     }
 }
 </script>

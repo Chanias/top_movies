@@ -1,11 +1,5 @@
 <template>
 
-  <div v-if="errored">
-    <p class="text-danger">Une erreur est survenue, veuillez rafraîchir la page</p>
-  </div>
-
-  <div v-else>
-
     <router-link class="routerLink" v-bind:to="`/MovieDetails/${id}`">
 
 
@@ -31,7 +25,7 @@
 
         <!-- Réduire le texte du résumé -->
         <div v-if="overview">
-          <p><b>Résumé :</b> {{overview.substring(0, 170) + "..." }}</p>
+          <p><b>Résumé :</b> {{overview.substring(0, 90) + "..." }}</p>
         </div>
         <div v-else>
           <p>Résumé non disponible</p>
@@ -40,7 +34,7 @@
 
     </router-link>
 
-  </div>
+
 
 </template>
 
@@ -73,9 +67,10 @@ export default {
   max-width: 20rem;
   height: 40rem;
 }
-.routerLink{
+
+.routerLink {
   text-decoration: none;
   color: inherit;
-  }
+}
 </style>
 

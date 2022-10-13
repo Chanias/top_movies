@@ -1,5 +1,5 @@
 <template>
-     <header class="bg-dark">
+  <header class="bg-dark">
     <img class="pt-3" alt="banner" src="../../assets/header.jpg" style="width: 30vw" />
     <div>
 
@@ -7,13 +7,12 @@
 
         <div class="container-fluid">
 
-            <router-link to="/">
-                    <a class="navbar-brand">
-                        <img src="../../assets/logo.png" alt="Logo" width="30" height="24"
-                            class="d-inline-block align-text-top">
-                        Top Movies
-                    </a>
-                </router-link>
+          <router-link to="/">
+            <a class="navbar-brand">
+              <img src="../../assets/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+              Top Movies
+            </a>
+          </router-link>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +28,8 @@
                 <router-link to="/AmericanMovies" class="link text-center nav-link mx-5">Films américains</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/LastMovies" class="link text-center nav-link mx-5">Les derniers films sortis</router-link>
+                <router-link to="/LastMovies" class="link text-center nav-link mx-5">Les derniers films sortis
+                </router-link>
               </li>
               <li class="nav-item">
                 <router-link to="/TopRatedMovies" class="link text-center nav-link mx-5">Top 50 : les mieux notés
@@ -46,26 +46,25 @@
 
     </div>
   </header>
-       
+
 </template>
 
 <style scoped>
 ul {
-    list-style-type: none;
-    padding: 0;
-    color: aliceblue;
+  list-style-type: none;
+  padding: 0;
+  color: aliceblue;
 }
 
 li {
-    list-style-type: none;
-    display: inline-block;
-    margin: 0 10px;
-    color: aliceblue;
+  list-style-type: none;
+  display: inline-block;
+  margin: 0 10px;
+  color: aliceblue;
 }
 
-nav a{
-    color: aliceblue;
+nav a {
+  color: aliceblue;
 }
-
 </style>
     

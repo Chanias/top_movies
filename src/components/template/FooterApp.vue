@@ -6,9 +6,9 @@
     </div>
 </template>
 <style>
-    #footer{
-        background-color: black;
-        color: antiquewhite;
-        
-    }
+#footer {
+    background-color: black;
+    color: antiquewhite;
+
+}
 </style>

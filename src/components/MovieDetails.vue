@@ -1,6 +1,6 @@
 <template>
 
-    <div v-if="errored">
+    <div v-if="error">
         <p class="text-danger">Une erreur est survenue, veuillez rafraîchir la page</p>
     </div>
 
@@ -29,6 +29,9 @@
                                 <span v-if="(movie.genres.length - 1 != index)">,</span>
                             </span>
                             <hr>
+                            <!-- TAGLINE -->
+                            <span><i>"{{movie.tagline}}"</i></span>
+                            <hr>
                             <p class="card-text"><b>Résumé :</b> {{movie.overview}}</p>
 
                             <div v-if="movie.original_language == 'en'">Langue :
@@ -55,39 +58,25 @@
 
                 <div class="row">
                     <div class="card-group">
+                        <!-- boucle vfor pour le casting -->
+                        <li v-for="(actor,index) in credits.cast" :key="actor.id">
+                            <div v-if="index <= 5">
 
-                        <div class="card">
-                            <h5 class="card-title">{{credits.cast[0].name}}</h5>
-                            
-                            <img v-bind:src="preUrl + credits.cast[0].poster_path" alt="Image_films" style="width:20rem" />
-      
-                            <div class="card-body">
-                                <p class="card-text">Personnage : {{credits.cast[0].character}}</p>
+                                <img v-if="actor.profile_path"
+                                    :src="'https://image.tmdb.org/t/p/original' + actor.profile_path" alt="photo acteur"
+                                    style="width:20rem" />
+                                <img v-else src="/images/image-not-found.png" alt="photo acteur non disponible" />
+                                <div>
+                                    <div>
+                                        <h3>{{ actor.original_name }}</h3>
+                                        <p>{{ actor.character }}</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="card">
-                            <h5 class="card-title">{{credits.cast[1].name}} </h5>
-                            <img src="{{credits.cast[1].preUrl + profile_path}}" class="card-img-top"
-                                alt="Photo Acteur">
-                            <div class="card-body">
-                                <p class="card-text">Personnage : {{credits.cast[1].character}}</p>
-                            </div>
-                        </div>
-
-                        <div class="card">
-                            <h5 class="card-title">{{credits.cast[5].name}}</h5>
-                            <img src="{{credits.cast[5].preUrl + profile_path}}" class="card-img-top"
-                                alt="Photo Acteur">
-                            <div class="card-body">
-                                <p class="card-text">Personnage : {{credits.cast[5].character}}</p>
-                            </div>
-                        </div>
+                        </li>
 
                     </div>
-
                 </div>
-
             </div>
 
         </div>
@@ -113,29 +102,34 @@ export default {
 
     created() {
         console.log(this.id);
-        axios
+        axios // APPEL API DE MOVIESLIST
             .get(`https://api.themoviedb.org/3/movie/${this.id}?api_key=06a9b62fd61f37d8abcc00ee0a9a008f&language=fr`)
             .then(res => {
-                // this.id =this.$route.params.id
                 this.movie = res.data;
                 console.log(this.movie);
 
-                axios
+                axios // APPEL API DE LA VIDEO DE BANDE ANNONCE
                     .get(`https://api.themoviedb.org/3/movie/${this.id}/videos?api_key=06a9b62fd61f37d8abcc00ee0a9a008f&language=fr`)
                     .then(res => {
                         this.video = res.data.results;
                         console.log(this.video)
 
-                        axios
+                        axios // APPEL API DU CREDIT POUR AVOIR CASTING ET PHOTO ACTEURS
                             .get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=06a9b62fd61f37d8abcc00ee0a9a008f&language=fr`)
                             .then(res => {
                                 this.credits = res.data;
                                 console.log(this.credits);
                             })
                             .catch(() => {
-                                this.errored = true;
+                                this.error = true;
                             });
                     })
+                    .catch(() => {
+                        this.error = true;
+                    });
+            })
+            .catch(() => {
+                this.error = true;
             });
     },
 }
@@ -160,5 +154,18 @@ hr {
     background-color: currentColor;
     border: 0;
     opacity: 0.25;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+span {
+    font-size: 1.5em
+}
+
+.card-group {
+    position: relative;
+    left: 13%;
 }
 </style>

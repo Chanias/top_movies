@@ -4,7 +4,7 @@
         Les films Américains
     </h1>
 
-    <div v-if="errored">
+    <div v-if="error">
         <p class="text-danger">Une erreur est survenue, veuillez rafraîchir la page</p>
     </div>
 
@@ -39,10 +39,10 @@ export default {
             preUrl: "https://image.tmdb.org/t/p/original/",
             movies: null,
             loading: true,
-            errored: false,
+            error: false,
         };
     },
-    
+
     created() {
         console.log('created');
         axios
@@ -50,6 +50,7 @@ export default {
             .then(res => {
                 this.movies = res.data.results
                 console.log(this.movies);
+
                 axios
                     .get('https://api.themoviedb.org/3/discover/movie?api_key=06a9b62fd61f37d8abcc00ee0a9a008f&language=fr&sort_by=revenue.desc&include_adult=false&include_video=false&page=1&with_original_language=en&vote_count.gte=1000&page=2')
                     .then(res => {
@@ -57,10 +58,13 @@ export default {
                             this.movies.push(movie)
                         })
                             .catch(() => {
-                                this.errored = true;
+                                this.error = true;
                             });
                     })
             })
+            .catch(() => {
+                this.error = true;
+            });
     }
 }
 </script>

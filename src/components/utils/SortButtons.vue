@@ -14,8 +14,8 @@
 
     <!-- Bouton du tri par date de sortie de films au clic (évènement)-->
     <button type="button" class="sortBy btn btn-secondary" @click="sortByDate()">
-        <p v-if="sortedByDate ==false">Tri : récents </p>
-        <p v-else>Tri : anciens</p>
+        <p v-if="sortedByDate ==false">Tri : date récente </p>
+        <p v-else>Tri : date ancienne</p>
     </button>
 
 </template>

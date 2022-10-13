@@ -4,7 +4,7 @@
         Les films Français
     </h1>
 
-    <div v-if="errored">
+    <div v-if="error">
         <p class="text-danger">Une erreur est survenue, veuillez rafraîchir la page</p>
     </div>
 
@@ -60,10 +60,13 @@ export default {
                             this.movies.push(movie)
                         })
                             .catch(() => {
-                                this.errored = true;
+                                this.error = true;
                             });
                     })
             })
+            .catch(() => {
+                this.error = true;
+            });
     }
 }
 </script>

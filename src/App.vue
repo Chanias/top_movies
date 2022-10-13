@@ -5,7 +5,7 @@
     <div v-if="$route.path == '/'">
       <!--si la route est / (racine du site) -->
       <h1 class="pt-5 font-weight-light">Vos films préférés sont sur Top Movies !</h1>
-      
+
       <MoviesList v-bind:movies="movies" :loading="loading" :errored="errored" />
     </div>
 
@@ -14,8 +14,8 @@
       <router-view :key="$route.fullPath"></router-view>
     </div>
     <div id="scroll_to_top">
-    <a href="#top"><img src="./assets/arrow_up.jpg" alt="Retourner en haut" /></a>
-</div>
+      <a href="#top"><img src="./assets/arrow_up.jpg" alt="Retourner en haut" /></a>
+    </div>
     <FooterApp />
   </div>
 </template>
@@ -44,8 +44,8 @@ export default {
   created() {
     console.log("created");
     axios
-    // mettre la clé api en variable et la cacher dans un fichier invisible pour les autreq CAR SECURITEEEEEEEEE
-    
+      // mettre la clé api en variable et la cacher dans un fichier invisible pour les autreq CAR SECURITEEEEEEEEE
+
       .get('https://api.themoviedb.org/3/discover/movie?api_key=06a9b62fd61f37d8abcc00ee0a9a008f&language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1')
       .then(res => {
         this.movies = res.data.results
@@ -85,7 +85,8 @@ nav a {
 nav a .router-link-exact-active {
   color: #42b983;
 }
-#scroll_to_top{
+
+#scroll_to_top {
 
   position: fixed;
   width: 25px;
@@ -93,8 +94,8 @@ nav a .router-link-exact-active {
   bottom: 50px;
   right: 30px;
 }
+
 #scroll_to_top img {
   width: 25px;
 }
-
 </style>
